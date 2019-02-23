@@ -24,7 +24,7 @@ class App extends Component {
     );
     const data = await api_call.json(); //this will convert the api data into a code that is readable for languages using json
     if (city && country) {
-      console.log(data);
+      // console.log(data);
       this.setState({
         temperature: data.main.temp,
         city: data.name,

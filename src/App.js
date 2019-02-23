@@ -7,6 +7,14 @@ import Weather from "./components/Weather";
 const API_KEY = "2d030085d740f1d58d6cfd0329851bc5";
 
 class App extends Component {
+  state = {
+    temperature: undefined,
+    city: undefined,
+    country: undefined,
+    humidity: undefined,
+    description: undefined,
+    error: undefined
+  };
   getWeather = async e => {
     e.preventDefault(); //This wil prevent the default behaviour that will happen when the button is pressed
     const city = e.target.elements.city.value;
@@ -16,6 +24,14 @@ class App extends Component {
     );
     const data = await api_call.json(); //this will convert the api data into a code that is readable for languages using json
     console.log(data);
+    this.setState({
+      temperature: data.main.temp,
+      city: data.name,
+      country: data.sys.country,
+      humidity: data.main.humidity,
+      description: data.weather[0].description,
+      error: ""
+    });
   };
 
   render() {
@@ -23,7 +39,14 @@ class App extends Component {
       <div>
         <Header />
         <Form getWeather={this.getWeather} />
-        <Weather />
+        <Weather
+          temperature={this.state.temperature}
+          city={this.state.city}
+          country={this.state.country}
+          humidity={this.state.humidity}
+          description={this.state.description}
+          error={this.state.error}
+        />
       </div>
     );
   }

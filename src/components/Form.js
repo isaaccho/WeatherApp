@@ -7,5 +7,5 @@ const Form = props => (
     <button>Find out the weather!</button>
   </form>
 );
-
+//this onSubmit will activate the getWeather function when the button is pressed
 export default Form;

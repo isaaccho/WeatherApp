@@ -12,6 +12,8 @@ class App extends Component {
     const api_call = await fetch(
       "https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=${API_KEY}&units=metric"
     );
+    const data = await api_call.json(); //this will convert the api data into a code that is readable for languages using json
+    console.log(data);
   };
 
   render() {

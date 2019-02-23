@@ -35,4 +35,6 @@ const Weather = props => (
   </div>
 );
 
+//different classnames to give different values unique style using CSS and bootstrap
+//since React is has class component, in HTML "class" is referred to "className" in React
 export default Weather;

@@ -8,9 +8,10 @@ import Weather from "./components/Weather";
 const API_KEY = "2d030085d740f1d58d6cfd0329851bc5";
 
 class App extends Component {
-  getWeather = async () => {
+  getWeather = async e => {
+    e.preventDefault(); //This wil prevent the default behaviour that will happen when the button is pressed
     const api_call = await fetch(
-      "https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=${API_KEY}&units=metric"
+      `http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${API_KEY}&units=metric`
     );
     const data = await api_call.json(); //this will convert the api data into a code that is readable for languages using json
     console.log(data);
@@ -20,7 +21,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Form />
+        <Form getWeather={this.getWeather} />
         <Weather />
       </div>
     );
